@@ -19,6 +19,10 @@ class MoviesPage extends StatelessWidget {
     return RefreshIndicator(
       key: _refreshIndicatorKey,
       onRefresh: () async {
+        MoviesBoxOfficeCubit.get(context).getTopRatedData();
+        MoviesComingSoonCubit.get(context).getComingSoonData();
+        MoviesInTheaterCubit.get(context).getInTheatersData();
+        MoviesTopRatedCubit.get(context).getMostPopularMoviesData();
         return Future<void>.delayed(const Duration(seconds: 3));
       },
       child: SingleChildScrollView(
