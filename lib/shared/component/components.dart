@@ -22,13 +22,18 @@ Widget BuildListView(model,context){
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                FadeInImage(
-                    width: MediaQuery.of(context).size.width*0.3,
-                    height: MediaQuery.of(context).size.height*0.2,
-                    placeholder:const AssetImage('assets/images/blank.png') , image: NetworkImage(
-                  model.items[index]
-                      .image!,
-                )),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(35),
+                  child: FadeInImage(
+
+                      width: MediaQuery.of(context).size.width*0.3,
+                      height: MediaQuery.of(context).size.height*0.2,
+                      placeholder:const AssetImage('assets/images/blank.png') , image: NetworkImage(
+
+                    model.items[index]
+                        .image!,
+                  ),fit: BoxFit.cover,),
+                ),
 
                 const   SizedBox(height: 20,width: 20,),
                 Text(model.items[index].title!,),

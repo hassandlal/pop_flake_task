@@ -47,7 +47,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: NetworkImage(widget.poster),
-                            fit: BoxFit.fitHeight,
+                            fit: BoxFit.fill,
                           ),
                         )),
                     const SizedBox(

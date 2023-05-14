@@ -1,4 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pop_flaktask/modules/Home_Screen/cubit/BoxOfficeMoviesCubit/cubit.dart';
@@ -63,8 +64,8 @@ class MyApp extends StatelessWidget {
                 AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
             home: BlocConsumer<InternetCubit, InternetState>(
               builder: (BuildContext context, state) {
-                if (state is InternetConnected &&
-                    (state.connectionType == ConnectionType.wifi||state.connectionType == ConnectionType.mobile)) {
+                if(kIsWeb){ return const MyHomePage();}
+                if (state is InternetConnected) {
                   return const MyHomePage();
                 }
                 else {
