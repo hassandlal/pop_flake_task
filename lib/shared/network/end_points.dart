@@ -4,4 +4,4 @@ final SEARCH = '/SearchMovie/$apiKey/';
 final MostPopularMoviesAPI = '/MostPopularMovies/$apiKey';
 final INTHEATERS ='/InTheaters/$apiKey';
 final COMINGSOON = '/ComingSoon/$apiKey';
-final TORRATED ='/BoxOffice/$apiKey';
+final TOPRATED ='/BoxOffice/$apiKey';

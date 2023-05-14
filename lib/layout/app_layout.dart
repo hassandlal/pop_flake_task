@@ -53,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage>
           children:  <Widget>[
             MoviesPage(),
             SearchScreen(),
-            SettingsPage(),
+           const SettingsPage(),
           ],
         ),
       );},

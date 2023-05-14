@@ -19,7 +19,7 @@ class MoviesBoxOfficeCubit extends Cubit<MoviesBoxOfficeStates > {
     emit(BoxOfficeLoadingHomeDataState());
 
     DioHelper.getData(
-      url: TORRATED,
+      url: TOPRATED,
       //token: apiKey,
     ).then((value) {
       boxOffice = BoxOffice.fromJson(value.data);

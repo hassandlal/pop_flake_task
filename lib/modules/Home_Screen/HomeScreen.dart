@@ -19,6 +19,7 @@ class MoviesPage extends StatelessWidget {
     return RefreshIndicator(
       key: _refreshIndicatorKey,
       onRefresh: () async {
+
         MoviesBoxOfficeCubit.get(context).getTopRatedData();
         MoviesComingSoonCubit.get(context).getComingSoonData();
         MoviesInTheaterCubit.get(context).getInTheatersData();
@@ -45,7 +46,7 @@ class MoviesPage extends StatelessWidget {
                     return Center(
                         child: Container(
                           width: MediaQuery.of(context).size.width*0.1,
-                          height: MediaQuery.of(context).size.height * 0.1,
+                          height: MediaQuery.of(context).size.height * 0.05,
                           child: CircularProgressIndicator(),
                         ));
                   } else if (state is ComingSoonSuccessHomeDataState) {
@@ -73,7 +74,7 @@ class MoviesPage extends StatelessWidget {
                     return Center(
                         child: Container(
                           width: MediaQuery.of(context).size.width*0.1,
-                          height: MediaQuery.of(context).size.height * 0.1,
+                          height: MediaQuery.of(context).size.height * 0.05,
                           child: CircularProgressIndicator(),
                         ));
                   } else if (state is InTheaterSuccessHomeDataState) {
@@ -100,7 +101,7 @@ class MoviesPage extends StatelessWidget {
                     return Center(
                         child: Container(
                           width: MediaQuery.of(context).size.width*0.1,
-                          height: MediaQuery.of(context).size.height * 0.1,
+                          height: MediaQuery.of(context).size.height * 0.05,
                           child: CircularProgressIndicator(),
                         ));
                   } else if (state is TopRatedSuccessHomeDataState) {
@@ -128,7 +129,7 @@ class MoviesPage extends StatelessWidget {
                   return Center(
                       child: Container(
                     width: MediaQuery.of(context).size.width*0.1,
-                    height: MediaQuery.of(context).size.height * 0.1,
+                    height: MediaQuery.of(context).size.height * 0.05,
                     child: CircularProgressIndicator(),
                   ));
                 } else if (state is BoxOfficeSuccessHomeDataState) {
@@ -136,8 +137,8 @@ class MoviesPage extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height * 0.7,
                     child: ListView.builder(
-                      shrinkWrap: true,
-                      primary: false,
+                     // shrinkWrap: true,
+                     // primary: false,
                       //physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         return buildTopRatedListMovie(
