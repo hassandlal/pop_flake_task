@@ -92,6 +92,10 @@ class ComplaintPage extends StatelessWidget {
                                 const SnackBar(
                                     content: Text('Processing Data')),
                               );
+                              nameController.clear();
+                              complainController.clear();
+                              emailController.clear();
+                              phoneController.clear();
 
                             }
                           },
