@@ -5,3 +5,4 @@ final MostPopularMoviesAPI = '/MostPopularMovies/$apiKey';
 final INTHEATERS ='/InTheaters/$apiKey';
 final COMINGSOON = '/ComingSoon/$apiKey';
 final TOPRATED ='/BoxOffice/$apiKey';
+final Details ='Trailer/$apiKey/';

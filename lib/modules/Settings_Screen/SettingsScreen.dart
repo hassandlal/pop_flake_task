@@ -29,6 +29,8 @@ class SettingsPage extends StatelessWidget {
                 ListTile(title:  Text('Leave Complain'),onTap: (){
                   navigateTo(context, ComplaintPage());
                 },),
+                myDivider(),
+
 
 
               ],

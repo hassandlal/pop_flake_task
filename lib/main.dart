@@ -2,10 +2,12 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pop_flaktask/modules/Details_Screen/cubit/cubit.dart';
 import 'package:pop_flaktask/modules/Home_Screen/cubit/BoxOfficeMoviesCubit/cubit.dart';
 import 'package:pop_flaktask/modules/Home_Screen/cubit/ComingSoonCubit/cubit.dart';
 import 'package:pop_flaktask/modules/Home_Screen/cubit/InTheaterCubit/cubit.dart';
 import 'package:pop_flaktask/modules/Home_Screen/cubit/TopRatedCubit/cubit.dart';
+import 'package:pop_flaktask/modules/Settings_Screen/cubit/cubit.dart';
 import 'package:pop_flaktask/shared/cubit/cubit.dart';
 import 'package:pop_flaktask/shared/cubit/internetcheck/cubit.dart';
 import 'package:pop_flaktask/shared/cubit/internetcheck/states.dart';
@@ -35,6 +37,12 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
+            create: (BuildContext context) =>
+                ComplaintCubit()),
+        BlocProvider(
+            create: (BuildContext context) =>
+            MovieDetailsCubit()),
+        BlocProvider(
           create: (BuildContext context) => AppCubit()..changeAppMode(),
         ),
         BlocProvider(
@@ -49,6 +57,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (BuildContext context) =>
                 MoviesTopRatedCubit()..getMostPopularMoviesData()),
+
         BlocProvider(
             create: (BuildContext context) =>
                 InternetCubit(connectivity: connectivity)),
@@ -64,19 +73,19 @@ class MyApp extends StatelessWidget {
                 AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
             home: BlocConsumer<InternetCubit, InternetState>(
               builder: (BuildContext context, state) {
-                if(kIsWeb){ return const MyHomePage();}
-                if (state is InternetConnected) {
+                if (kIsWeb) {
                   return const MyHomePage();
                 }
-                else {
-                  return const Scaffold(body: Center(child: Text('no internet connection')));
+                if (state is InternetConnected) {
+                  return const MyHomePage();
+                } else {
+                  return const Scaffold(
+                      body: Center(child: Text('no internet connection')));
                 }
-
               },
-              listener: (BuildContext context, Object? state) {
-
-              },
+              listener: (BuildContext context, Object? state) {},
             ),
+
           );
         },
       ),
