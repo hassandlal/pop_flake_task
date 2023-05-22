@@ -137,9 +137,6 @@ class MoviesPage extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height * 0.7,
                     child: ListView.builder(
-                     // shrinkWrap: true,
-                     // primary: false,
-                      //physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         return buildTopRatedListMovie(
                             MoviesBoxOfficeCubit.get(context)

@@ -16,15 +16,15 @@ Widget BuildListView(model, context) {
     child: ListView.builder(
       shrinkWrap: true,
       itemBuilder: (context, index) {
-        return BlocConsumer<MovieDetailsCubit,MoviesDetailsStates>(
+        return BlocConsumer<MovieDetailsCubit, MoviesDetailsStates>(
           builder: (BuildContext context, state) {
             return InkWell(
               onTap: () {
-                MovieDetailsCubit.get(context).getMovieDetailsData(model.items[index].id!);
+                MovieDetailsCubit.get(context)
+                    .getMovieDetailsData(model.items[index].id!);
                 navigateTo(
                     context,
                     DetailsScreen(
-
                         poster: model.items[index].image!,
                         name: model.items[index].title!,
                         about: model.items[index].fullTitle!));
@@ -130,62 +130,68 @@ Widget buildListMovie(model, context) {
 Widget buildTopRatedListMovie(model, context) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
-    child: InkWell(
-      onTap: () {
-        navigateTo(
-            context,
-            TopRatedBoxOfficeScreen(
-              name: model.title,
-              poster: model.image,
-              rank: model.rank,
-              weeks: model.weeks,
-            ));
-      },
-      child: Container(
-        height: MediaQuery.of(context).size.height * 0.2,
-        child: Row(
-          children: [
-            Expanded(
-              flex: 1,
-              child: FadeInImage(
-                  placeholder: const AssetImage('assets/images/blank.png'),
-                  image: NetworkImage(
-                    model.image!,
-                  )),
-            ),
-            Expanded(
-              flex: 3,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Name: " + model.title,
-                    ),
-                    Text(
-                      'Weeks : ' + model.weeks,
-                      textAlign: TextAlign.start,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Text(
-                      'rank : ' + model.rank,
-                      textAlign: TextAlign.start,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Text(
-                      'gross : ' + model.gross,
-                      textAlign: TextAlign.start,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
+    child: BlocConsumer<MovieDetailsCubit, MoviesDetailsStates>(
+      builder: (BuildContext context, state) {
+        return InkWell(
+          onTap: () {
+            MovieDetailsCubit.get(context).getMovieDetailsData(model.id);
+            navigateTo(
+                context,
+                TopRatedBoxOfficeScreen(
+                  name: model.title,
+                  poster: model.image,
+                  rank: model.rank,
+                  weeks: model.weeks,
+                ));
+          },
+          child: Container(
+            height: MediaQuery.of(context).size.height * 0.2,
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: FadeInImage(
+                      placeholder: const AssetImage('assets/images/blank.png'),
+                      image: NetworkImage(
+                        model.image!,
+                      )),
                 ),
-              ),
-            )
-          ],
-        ),
-      ),
+                Expanded(
+                  flex: 3,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Name: " + model.title,
+                        ),
+                        Text(
+                          'Weeks : ' + model.weeks,
+                          textAlign: TextAlign.start,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Text(
+                          'rank : ' + model.rank,
+                          textAlign: TextAlign.start,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Text(
+                          'gross : ' + model.gross,
+                          textAlign: TextAlign.start,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        );
+      },
+      listener: (BuildContext context, Object? state) {},
     ),
   );
 }

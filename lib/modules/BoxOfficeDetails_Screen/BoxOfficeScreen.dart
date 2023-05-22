@@ -1,9 +1,15 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pop_flaktask/modules/Details_Screen/cubit/cubit.dart';
+import 'package:pop_flaktask/modules/Details_Screen/cubit/states.dart';
+import 'package:pop_flaktask/modules/WebView/WebView.dart';
+
+import '../../shared/component/components.dart';
 
 
-class TopRatedBoxOfficeScreen extends StatefulWidget {
+class TopRatedBoxOfficeScreen extends StatelessWidget {
   final String poster;
   final String name;
   final String rank;
@@ -17,11 +23,6 @@ class TopRatedBoxOfficeScreen extends StatefulWidget {
     required this.weeks,
   }) : super(key: key);
 
-  @override
-  State<TopRatedBoxOfficeScreen> createState() => _TopRatedBoxOfficeScreenState();
-}
-
-class _TopRatedBoxOfficeScreenState extends State<TopRatedBoxOfficeScreen> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -46,7 +47,7 @@ class _TopRatedBoxOfficeScreenState extends State<TopRatedBoxOfficeScreen> {
                         height: screenHeight*0.2,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: NetworkImage(widget.poster),
+                            image: NetworkImage(poster),
                             fit: BoxFit.cover,
                           ),
                         )),
@@ -56,7 +57,7 @@ class _TopRatedBoxOfficeScreenState extends State<TopRatedBoxOfficeScreen> {
                     Padding(
                       padding: const EdgeInsets.only(left: 10.0),
                       child: Text(
-                        "Name: " + widget.name,
+                        "Name: " + name,
                         textAlign: TextAlign.start,
                         style: const TextStyle(
                           fontSize: 17,
@@ -72,7 +73,7 @@ class _TopRatedBoxOfficeScreenState extends State<TopRatedBoxOfficeScreen> {
                     Padding(
                       padding: const EdgeInsets.only(left: 10.0),
                       child: Text(
-                        'Rank : ' + widget.rank,
+                        'Rank : ' + rank,
                         textAlign: TextAlign.start,
                         style: const TextStyle(
                           fontSize: 17,
@@ -87,7 +88,7 @@ class _TopRatedBoxOfficeScreenState extends State<TopRatedBoxOfficeScreen> {
                     Padding(
                       padding: const EdgeInsets.only(left: 10.0),
                       child: Text(
-                        'Weeks : ' + widget.weeks,
+                        'Weeks : ' + weeks,
                         textAlign: TextAlign.start,
                         style: const TextStyle(
                           fontSize: 17,
@@ -96,6 +97,18 @@ class _TopRatedBoxOfficeScreenState extends State<TopRatedBoxOfficeScreen> {
                         ),
                       ),
                     ),
+                    BlocConsumer<MovieDetailsCubit, MoviesDetailsStates>(builder: (context,state){
+
+                      return Center(
+                        child: ElevatedButton(
+                            onPressed: () => navigateTo(
+                                context,
+                                WebViewPage(
+                                  urlsent: MovieDetailsCubit.get(context).moviesdetails?.link.toString(),
+                                )),
+                            child: const Text('see trial video')),
+                      );
+                    }, listener: (context,state){})
                   ],
                 ))
           ],
