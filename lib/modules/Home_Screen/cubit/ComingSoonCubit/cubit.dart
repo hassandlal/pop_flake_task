@@ -18,13 +18,13 @@ class MoviesComingSoonCubit extends Cubit<MoviesComingSoonStates> {
 
     DioHelper.getData(
       url: COMINGSOON,
-      //token: apiKey,
+
     ).then((value)  {
       comingSoon = ComingSoon.fromJson(value.data);
-      print(comingSoon?.items![0].toString());
+
       emit(ComingSoonSuccessHomeDataState());
     }).catchError((error) {
-      print(error.toString());
+
       emit(ComingSoonErrorHomeDataState());
     });
   }

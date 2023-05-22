@@ -27,11 +27,11 @@ class MoviesInTheaterCubit extends Cubit<MoviesInTheaterStates> {
 
     ).then((value) {
       inTheaters = InTheaters.fromJson(value.data);
-      print(inTheaters?.items![0].id.toString());
+
 
       emit(InTheaterSuccessHomeDataState());
     }).catchError((error) {
-      print(error.toString());
+
       emit(InTheaterErrorHomeDataState());
     });
   }

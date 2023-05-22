@@ -7,7 +7,6 @@ import 'package:pop_flaktask/modules/Home_Screen/cubit/BoxOfficeMoviesCubit/cubi
 import 'package:pop_flaktask/modules/Home_Screen/cubit/ComingSoonCubit/cubit.dart';
 import 'package:pop_flaktask/modules/Home_Screen/cubit/InTheaterCubit/cubit.dart';
 import 'package:pop_flaktask/modules/Home_Screen/cubit/TopRatedCubit/cubit.dart';
-import 'package:pop_flaktask/modules/Settings_Screen/cubit/cubit.dart';
 import 'package:pop_flaktask/shared/cubit/cubit.dart';
 import 'package:pop_flaktask/shared/cubit/internetcheck/cubit.dart';
 import 'package:pop_flaktask/shared/cubit/internetcheck/states.dart';

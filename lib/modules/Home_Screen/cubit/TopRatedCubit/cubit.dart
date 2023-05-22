@@ -19,11 +19,11 @@ class MoviesTopRatedCubit extends Cubit<MoviesTopRatedStates> {
       url: MostPopularMoviesAPI,
     ).then((value) {
       mostPopularMovies = MostPopularMovies.fromJson(value.data);
-      print(mostPopularMovies?.items![0].id.toString());
+
 
       emit(TopRatedSuccessHomeDataState());
     }).catchError((error) {
-      print(error.toString());
+
       emit(TopRatedErrorHomeDataState());
     });
   }

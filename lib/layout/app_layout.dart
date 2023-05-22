@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pop_flaktask/shared/cubit/cubit.dart';
-import '../modules/Details_Screen/cubit/cubit.dart';
-import '../modules/Details_Screen/cubit/states.dart';
 import '../modules/Home_Screen/HomeScreen.dart';
 import '../modules/Search_Screen/SearchScreen.dart';
 import '../modules/Settings_Screen/SettingsScreen.dart';

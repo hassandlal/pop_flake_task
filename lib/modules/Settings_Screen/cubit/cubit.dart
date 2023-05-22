@@ -15,7 +15,7 @@ List<ComplaintModel> complaints =[];
 void addNewComplaint(String username,String mail, String complaint){
   ComplaintModel newcomplaint = ComplaintModel(username,mail,complaint);
   complaints.add(newcomplaint);
-  print(newcomplaint.complaint.toString());
+
   emit(NewComplaimentAddedSuccessfully());
 
 }

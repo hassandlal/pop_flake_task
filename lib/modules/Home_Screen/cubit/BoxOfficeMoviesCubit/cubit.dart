@@ -20,14 +20,14 @@ class MoviesBoxOfficeCubit extends Cubit<MoviesBoxOfficeStates > {
 
     DioHelper.getData(
       url: TOPRATED,
-      //token: apiKey,
+
     ).then((value) {
       boxOffice = BoxOffice.fromJson(value.data);
-      print(boxOffice?.items![0].id.toString());
+
 
       emit(BoxOfficeSuccessHomeDataState());
     }).catchError((error) {
-      print(error.toString());
+
       emit(BoxOfficeErrorHomeDataState());
     });
   }
